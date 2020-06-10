@@ -1105,7 +1105,7 @@ form.example::after {
                 <?php
                     $search=$_GET['search'];
                     if ($search !="") {
-                        # code...
+                
                         echo "
                         <label style='margin-left:0%'>Hasil Pencarian $search </label> <br>
                         ";
