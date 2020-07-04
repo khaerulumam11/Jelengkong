@@ -9,7 +9,7 @@ include "config/koneksi.php";
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Desa Jelengkong</title>
+    <title>Desa Jelekong</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -115,11 +115,11 @@ h6,
     z-index: 997;
     transition: all 0.5s;
     padding: 20px 0;
-    background: #2d6760;
+    background: #63372C;
 }
 
 #header.header-scrolled {
-    background: #1d443f;
+    background: #63372C;
     height: 60px;
     padding: 10px 0;
 }
@@ -176,7 +176,7 @@ h6,
 .nav-menu a {
     display: block;
     position: relative;
-    color: #d2ece9;
+    color: #fff;
     padding: 10px 15px;
     transition: 0.3s;
     font-size: 14px;
@@ -186,7 +186,7 @@ h6,
 .nav-menu a:hover,
 .nav-menu .active>a,
 .nav-menu li:hover>a {
-    color: #9cd5ce;
+    color: #FFF;
     text-decoration: none;
 }
 
@@ -872,7 +872,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-    background: #073839;
+    background: #63372C;
     padding: 30px 0;
     color: #fff;
     font-size: 14px;
@@ -900,7 +900,7 @@ section {
 
 #hero:before {
     content: "";
-    background: rgba(105, 170, 150, 0.65);
+    background: rgba(100, 150, 120, 0.45);
     position: absolute;
     bottom: 0;
     top: 0;
@@ -977,9 +977,9 @@ section {
 
 button {
     border-radius: 4px;
-    background-color: #FFFFFF;
-    border-color: green;
-    color: green;
+    background-color: #F2E5D7;
+    border-color: #63372C;
+    color: black;
     text-align: center;
     font-size: 23px;
     border: inactive;
@@ -988,6 +988,10 @@ button {
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
+}
+
+.button2 {
+    background-color: #F9ECCC;
 }
 
 .button span {
@@ -1014,6 +1018,127 @@ button {
     opacity: 1;
     right: 0;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+}
+
+.mySlides {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 5.5s;
+    animation-name: fade;
+    animation-duration: 5.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .3
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .3
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
+}
 </style>
 
 <body>
@@ -1023,7 +1148,7 @@ button {
         <div class="container">
 
             <div class="logo float-left">
-                <h1 class="text-light"><a href="#hero"><span>Jelengkong</span></a></h1>
+                <h1 class="text-light"><a href="#hero"><span>JELENGKONG</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -1041,21 +1166,50 @@ button {
     </header><!-- End #header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero">
-        <div class="hero-container">
-            <h1 style="font-family:Glacial Indefference">SELAMAT DATANG</h1>
-            <h1 style="font-family:Cormorant Garamond">DESA LUKIS JELENGKONG</h1>
+    <section>
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <img src="assets/img/portfolio/portfolio-1.jpg" style="width:100%;height:510px">
+                <div class="text">Caption Text</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="assets/img/portfolio/portfolio-2.jpg" style="width:100%;height:510px">
+                <div class="text">Caption Two</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="assets/img/portfolio/portfolio-3.jpg" style="width:100%;height:510px">
+                <div class="text">Caption Three</div>
+            </div>
+
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+
         </div>
+        <br>
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
     </section><!-- #hero -->
 
     <main id="main">
 
         <!-- ======= About Us Section ======= -->
-        <section id="about" class="about">
+        <section id="about" class="about" style="background-color:#E3DC95;margin-top:-5%">
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Profil Desa</h2>
+                    <b>
+                        <h2 style="color:black">Profil Desa</h2>
+                    </b>
                 </div>
 
                 <?php
@@ -1067,7 +1221,7 @@ button {
                         <img src="assets/img/profil_desa/profileDesa.png" style="margin-top:-4%" class="img-fluid"
                             alt="">
                     </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1" style="color:black">
                         <?php echo $r['deskripsiDesa']?>
                     </div>
                 </div>
@@ -1078,11 +1232,11 @@ button {
         <!-- ======= Services Section ======= -->
 
         <!-- ======= Our Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
+        <section id="portfolio" class="portfolio" style="background-color:#F2E5D7">
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Galeri Lukisan</h2>
+                    <h2 style="color:black">Galeri Lukisan</h2>
                 </div>
 
                 <div class="row">
@@ -1189,12 +1343,15 @@ button {
 
 
         <!-- ======= Our Team Section ======= -->
-        <section id="team" class="portfolio" style="margin-top:5%">
+        <section id="team" class="portfolio" style="margin-top:5%; background-color:#F9ECCC">
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Acara</h2>
-                    <p>Pameran seni rupa adalah kegiatan untuk menyajikan karya seni rupa agar dapat diapresiasi oleh
+                    <b>
+                        <h2 style="color:black">Acara</h2>
+                    </b>
+                    <p style="color:black">Pameran seni rupa adalah kegiatan untuk menyajikan karya seni rupa agar dapat
+                        diapresiasi oleh
                         masyarakat
                         luas secara sadar melalui penyampaian yang terencana. Penyelenggaraannya sendiri dapat dilakukan
                         diberbagai tempat
@@ -1327,6 +1484,60 @@ button {
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
+
+    <script>
+    var slideIndex = 0;
+    showSlides();
+
+    var slidesIndex = 0;
+
+    function plusSlides(n) {
+        showSlide(slidesIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlide(slidesIndex = n);
+    }
+
+    function showSlide(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slidesIndex = 1
+        }
+        if (n < 1) {
+            slidesIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 5000); // Change image every 2 seconds
+    }
+    </script>
 
     <script type="text/javascript">
     $(document).ready(function() {

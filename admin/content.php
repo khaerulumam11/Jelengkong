@@ -25,12 +25,12 @@ if ( $_GET[module] == 'home' ) {
 } elseif ( $_GET[module] == 'tema' ) {
     include 'sidebar.php';
     include 'modul/mod_tema/tema.php';
-} elseif ( $_GET[module] == 'modulprak' ) {
+} elseif ( $_GET[module] == 'berita' ) {
     include 'sidebar.php';
-    include 'modul/mod_modulprak/modulprak.php';
-} elseif ( $_GET[module] == 'jurnal' ) {
+    include 'modul/mod_berita/berita.php';
+} elseif ( $_GET[module] == 'slideshow' ) {
     include 'sidebar.php';
-    include 'modul/mod_jurnal/jurnal.php';
+    include 'modul/mod_slideshow/slideshow.php';
 } elseif ( $_GET[module] == 'pengaturanujian' ) {
     include 'sidebar.php';
     include 'modul/mod_pengaturanujian/pengaturanujian.php';

@@ -9,7 +9,7 @@ include "config/koneksi.php";
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Galeri Lukisan</title>
+    <title>Desa Jelengkong</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -21,8 +21,6 @@ include "config/koneksi.php";
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900"
         rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 
@@ -893,7 +891,7 @@ section {
 
 #hero {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     background: url("assets/img/header.jpg") top center;
     background-size: cover;
     position: relative;
@@ -977,74 +975,44 @@ section {
     }
 }
 
-.filterDiv {
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
-.contain {
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-/* Style the buttons */
-.tombol {
-    border: none;
-    outline: none;
-    padding: 12px 12px;
-    width: 12%;
-    font-size: 15px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    margin-bottom: 2%;
-}
-
-.tombol:hover {
-    background-color: #ddd;
-}
-
-.tombol.active {
-    background-color: #70B9B0;
-    border: none;
-
-    outline: none;
-    color: white;
-}
-
-
-
-form.example input[type=text] {
+button {
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    border-color: green;
+    color: green;
+    text-align: center;
+    font-size: 23px;
+    border: inactive;
     padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 90%;
-    background: #f1f1f1;
-}
-
-form.example button {
-    float: left;
-    width: 10%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
+    width: 200px;
+    transition: all 0.5s;
     cursor: pointer;
+    margin: 5px;
 }
 
-form.example button:hover {
-    background: #0b7dda;
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
 }
 
-form.example::after {
-    content: "";
-    clear: both;
-    display: table;
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 </style>
 
@@ -1055,17 +1023,17 @@ form.example::after {
         <div class="container">
 
             <div class="logo float-left">
-                <h1 class="text-light"><a href="#hero"><span>Jelekong</span></a></h1>
+                <h1 class="text-light"><a href="#hero"><span>Jelengkong</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
             <nav class="nav-menu float-right d-none d-lg-block">
                 <ul>
-                    <li class="text-light"><a href="index.php #about">Profil Desa</a></li>
-                    <li><a href="index.php #portfolio">Galeri Lukisan</a></li>
-                    <li><a href="index.php #team">Acara</a></li>
-                    <li><a href="index.php #contact">Kontak</a></li>
+                    <li class="text-light"><a href="#about">Profil Desa</a></li>
+                    <li><a href="#portfolio">Galeri Lukisan</a></li>
+                    <li><a href="#team">Acara</a></li>
+                    <li><a href="#contact">Kontak</a></li>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -1075,60 +1043,60 @@ form.example::after {
     <!-- ======= Hero Section ======= -->
     <section id="hero">
         <div class="hero-container">
-            <h1 style="font-family:Glacial Indefference">GALERI LUKISAN</h1>
+            <h1 style="font-family:Glacial Indefference">SELAMAT DATANG</h1>
+            <h1 style="font-family:Cormorant Garamond">DESA LUKIS JELENGKONG</h1>
         </div>
     </section><!-- #hero -->
 
     <main id="main">
 
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
 
+                <div class="section-title">
+                    <h2>Profil Desa</h2>
+                </div>
 
-        <section id="portfolio" class="portfolio">
-            <div class="container" id="myBtnContainer">
-                <form class="example" action="" style="margin-bottom:2%">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
                 <?php
-                    $search = $_GET['search'];
-                      if ($search !="") {
-                        # code...
-                        echo "
-                        <label style='margin-bottom:2%'>Hasil Pencarian $search </label> <br>
-                        ";
-                    }
-                    ?>
+                 $tampil=mysqli_query($config,"SELECT * FROM tbl_profil_desa");
+                 $r=mysqli_fetch_array($tampil);
+                ?>
                 <div class="row">
-
-
-                    <div class="col-lg-12">
-
-                        <center>
-                            <button class="tombol active" onclick="filterSelection('all')"> Show all</button>
-
-                            <?php
-                                  $tampil_tema=mysqli_query($config,"SELECT * FROM tbl_tema LIMIT 5");
-                                   while ($tema=mysqli_fetch_array($tampil_tema)){
-                            ?>
-                            <button class="tombol" onclick="filterSelection('<?php echo $tema[tema];?>')">
-                                <?php echo $tema[tema] ?></button>
-
-                            <?php 
-                                   }
-                             ?>
-                        </center>
+                    <div class="col-lg-6 order-1 order-lg-2">
+                        <img src="assets/img/profil_desa/profileDesa.png" style="margin-top:-4%" class="img-fluid"
+                            alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
+                        <?php echo $r['deskripsiDesa']?>
                     </div>
                 </div>
 
-                <div class="row contain">
+            </div>
+        </section><!-- End About Us Section -->
+
+        <!-- ======= Services Section ======= -->
+
+        <!-- ======= Our Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Galeri Lukisan</h2>
+                </div>
+
+                <div class="row">
                     <?php
-                         $show=mysqli_query($config,"SELECT * FROM tbl_portofolio, tbl_user WHERE tbl_portofolio.idPelukis = tbl_user.idUser AND tbl_portofolio.namaLukisan LIKE '%$search%'");
+                         $show=mysqli_query($config,"SELECT * FROM tbl_portofolio, tbl_user WHERE tbl_portofolio.idPelukis = tbl_user.idUser ORDER BY tbl_portofolio.id ASC LIMIT 9");
                          while ($y=mysqli_fetch_array($show)){
                         ?>
-                    <div class="col-lg-4 col-md-8 filterDiv <?php echo $y[temaLukisan]; ?>">
+                    <div class="col-lg-4 col-md-8 filter-app">
                         <div class="portfolio-item" data-toggle="modal"
                             data-target="#portfolioModale<?php echo $y[id]?>">
-
+                            <div class="portfolio-item-caption align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i
+                                        class="fas fa-plus fa-3x"></i></div>
+                            </div>
                             <img class="rounded" width="auto" height="300"
                                 src="pelukis/assets/img/portfolio/<?php echo $y[gambarLukisan]?>" class="img-fluid"
                                 alt="">
@@ -1139,7 +1107,9 @@ form.example::after {
                         role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
                         <div class="modal-dialog modal-xl" role="document">
                             <div class="modal-content">
-
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                                </button>
                                 <div class="modal-body ">
                                     <div class="container">
                                         <div class="row justify-content-center">
@@ -1188,7 +1158,6 @@ form.example::after {
                             </div>
                         </div>
 
-
                     </div>
 
                     <?php
@@ -1196,7 +1165,22 @@ form.example::after {
                     ?>
                 </div>
 
+                <?php 
 
+
+            $show=mysqli_query($config,"SELECT COUNT(*) as jum FROM tbl_portofolio");
+            $u    = mysqli_fetch_array( $show );
+            if ($u[jum] >=3) {
+                echo "
+                 <center> <a href='all_galeri.php'><button class='button'><span>See All </span></button> </center> </a>
+                ";
+            } else {
+                echo "
+                 <center> <button style ='display : none' class='button'><span>See All </span></button> </center>
+                ";
+            }
+            
+            ?>
 
             </div>
         </section><!-- End Our Portfolio Section -->
@@ -1204,7 +1188,111 @@ form.example::after {
         <!-- ======= Frequently Asked Questions Section ======= -->
 
 
+        <!-- ======= Our Team Section ======= -->
+        <section id="team" class="portfolio" style="margin-top:5%">
+            <div class="container">
 
+                <div class="section-title">
+                    <h2>Acara</h2>
+                    <p>Pameran seni rupa adalah kegiatan untuk menyajikan karya seni rupa agar dapat diapresiasi oleh
+                        masyarakat
+                        luas secara sadar melalui penyampaian yang terencana. Penyelenggaraannya sendiri dapat dilakukan
+                        diberbagai tempat
+                        , umumnya adalah galeri, ruang yang memang dirancang untuk berpameran
+                    </p>
+                </div>
+                <div class="row portfolio-container">
+
+
+                    <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_acara");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
+                    <div class="col-lg-4 col-md-6 filter-app">
+                        <div class="portfolio-item">
+                            <img src="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h3><a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
+                                        data-gall="portfolioGallery" class="venobox"
+                                        title="<?php echo $y[namaAcara]?>"><?php echo $y[namaAcara]?></a></h3>
+                                <a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
+                                    data-gall="portfolioGallery" class="venobox" title="Web 1"><i
+                                        class="icofont-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <?php
+                    }
+                    ?>
+
+                </div>
+                <?php 
+
+
+            $showAcara=mysqli_query($config,"SELECT COUNT(*) as jum FROM tbl_acara");
+            $x  = mysqli_fetch_array( $showAcara );
+            if ($x[jum] >= 3) {
+                echo "
+                 <center> <a href='all_acara.php'><button class='button'><span>See All </span></button> </center> </a>
+                ";
+            } else {
+                echo "
+                 <center> <button style ='display : none' class='button'><span>See All </span></button> </center>
+                ";
+            }
+            
+            ?>
+
+        </section><!-- End Our Team Section -->
+
+        <!-- ======= Contact Us Section ======= -->
+        <section id="contact" class="contact section-bg">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Kontak Kami</h2>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info">
+                            <div>
+                                <b> <label>Alamat : &nbsp </label> </b>
+                                <p> <?php echo $r[alamatDesa]?></p>
+                            </div>
+
+
+                            <div>
+                                <b><label>Email : &nbsp</label></b>
+                                <p> <?php echo $r[emailDesa]?></p>
+                            </div>
+
+
+                            <div>
+                                <b><label>No Telepon : &nbsp</label></b>
+                                <p> <?php echo $r[noTelp]?></p>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-12">
+                        <iframe height="400" width="600" class="map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31679.19153584319!2d107.64097932824737!3d-7.021164081371023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ea0fc9d23975%3A0xcc722fa786cbb977!2sJelekong%2C%20Kec.%20Baleendah%2C%20Bandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1590216933913!5m2!1sid!2sid"
+                            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                            aria-hidden="false" tabindex="0"></iframe>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Us Section -->
 
         <!-- ======= Map Section ======= -->
 
@@ -1250,55 +1338,6 @@ form.example::after {
 
     })
     </script>
-
-    <script>
-    filterSelection("all")
-
-    function filterSelection(c) {
-        var x, i;
-        x = document.getElementsByClassName("filterDiv");
-        if (c == "all") c = "";
-        for (i = 0; i < x.length; i++) {
-            w3RemoveClass(x[i], "show");
-            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-        }
-    }
-
-    function w3AddClass(element, name) {
-        var i, arr1, arr2;
-        arr1 = element.className.split(" ");
-        arr2 = name.split(" ");
-        for (i = 0; i < arr2.length; i++) {
-            if (arr1.indexOf(arr2[i]) == -1) {
-                element.className += " " + arr2[i];
-            }
-        }
-    }
-
-    function w3RemoveClass(element, name) {
-        var i, arr1, arr2;
-        arr1 = element.className.split(" ");
-        arr2 = name.split(" ");
-        for (i = 0; i < arr2.length; i++) {
-            while (arr1.indexOf(arr2[i]) > -1) {
-                arr1.splice(arr1.indexOf(arr2[i]), 1);
-            }
-        }
-        element.className = arr1.join(" ");
-    }
-
-    // Add active class to the current button (highlight it)
-    var btnContainer = document.getElementById("myBtnContainer");
-    var btns = btnContainer.getElementsByClassName("tombol");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-    </script>
-
 
 </body>
 
