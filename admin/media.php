@@ -22,7 +22,7 @@ if ( $sesi_username == NULL || empty( $sesi_username ) )
     <meta name='description' content=''>
     <meta name='author' content=''>
 
-    <title>Aplikasi Admin Jelengkong</title>
+    <title>Aplikasi Admin Jelekong</title>
 
     <!-- Bootstrap Core CSS -->
     <link href='../pelukis/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'>

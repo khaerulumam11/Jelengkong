@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Aplikasi Admin Jelengkong</a>
+                <a class="navbar-brand" href="#">Aplikasi Admin Jelekong</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -48,11 +48,19 @@
                         </li>
 
                         <li>
+                            <a href="?module=slideshow"><i class="fa fa-file fa-fw"></i> Kelola Slideshow</a>
+                        </li>
+
+                        <li>
                             <a href="?module=acara"><i class="fa fa-file fa-fw"></i> Kelola Acara</a>
                         </li>
 
                         <li>
                             <a href="?module=tema"><i class="fa fa-file fa-fw"></i> Kelola Tema/Kategori</a>
+                        </li>
+
+                        <li>
+                            <a href="?module=berita"><i class="fa fa-file fa-fw"></i> Kelola Berita</a>
                         </li>
 
                         <li>
