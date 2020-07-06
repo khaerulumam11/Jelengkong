@@ -1148,7 +1148,7 @@ img {
         <div class="container">
 
             <div class="logo float-left">
-                <h1 class="text-light"><a href="#hero"><span>JELENGKONG</span></a></h1>
+                <h1 class="text-light"><a href="#hero"><span>JELEKONG</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -1168,34 +1168,36 @@ img {
     <!-- ======= Hero Section ======= -->
     <section>
         <div class="slideshow-container">
-
+            <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_slideshow");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
             <div class="mySlides fade">
-                <img src="assets/img/portfolio/portfolio-1.jpg" style="width:100%;height:510px">
-                <div class="text">Caption Text</div>
+                <img src="assets/img/slideshow/<?php echo $y[slideshow]?>" style="width:100%;height:570px">
+                <div class="text"> <?php echo $y[judul]?></div>
             </div>
-
-            <div class="mySlides fade">
-                <img src="assets/img/portfolio/portfolio-2.jpg" style="width:100%;height:510px">
-                <div class="text">Caption Two</div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="assets/img/portfolio/portfolio-3.jpg" style="width:100%;height:510px">
-                <div class="text">Caption Three</div>
-            </div>
-
+            <?php
+                         }
+                    ?>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
 
 
+
         </div>
         <br>
+
         <div style="text-align:center">
+            <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_slideshow");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
             <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+            <?php
+                         }
+                    ?>
         </div>
 
     </section><!-- #hero -->
@@ -1203,7 +1205,7 @@ img {
     <main id="main">
 
         <!-- ======= About Us Section ======= -->
-        <section id="about" class="about" style="background-color:#E3DC95;margin-top:-5%">
+        <section id="about" class="about" style="background-color:#F2E5D7;margin-top:-5%">
             <div class="container">
 
                 <div class="section-title">
@@ -1343,7 +1345,7 @@ img {
 
 
         <!-- ======= Our Team Section ======= -->
-        <section id="team" class="portfolio" style="margin-top:5%; background-color:#F9ECCC">
+        <section id="team" class="portfolio" style="background-color:#F2E5D7">
             <div class="container">
 
                 <div class="section-title">
@@ -1405,7 +1407,7 @@ img {
         </section><!-- End Our Team Section -->
 
         <!-- ======= Contact Us Section ======= -->
-        <section id="contact" class="contact section-bg">
+        <section id="contact" class="contact section-bg" style="background-color:#F2E5D7">
             <div class="container">
 
                 <div class="section-title">
