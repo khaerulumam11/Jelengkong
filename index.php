@@ -30,6 +30,19 @@ include "config/koneksi.php";
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
 
+    <link href="news/css/media_query.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link href="news/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="news/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="news/css/owl.theme.default.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link href="news/css/style_1.css" rel="stylesheet" type="text/css" />
+    <!-- Modernizr JS -->
+    <script src="news/js/modernizr-3.5.0.min.js"></script>
+
+
     <!-- Template Main CSS File -->
     <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
 
@@ -1202,126 +1215,222 @@ img {
 
     </section><!-- #hero -->
 
-    <main id="main">
-
-        <!-- ======= About Us Section ======= -->
-        <section id="about" class="about" style="background-color:#F2E5D7;margin-top:-5%">
-            <div class="container">
-
-                <div class="section-title">
-                    <b>
-                        <h2 style="color:black">Profil Desa</h2>
-                    </b>
+    <div class="container-fluid pb-4 pt-5" style="margin-top:-5%">
+        <div class="container animate-box">
+            <div>
+                <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">
+                    News
+                </div>
+            </div>
+            <div class="owl-carousel owl-theme" id="slider2" style="background-color:#ffffff00">
+                <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_berita WHERE typeBerita = 'Text & Gambar'");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
+                <div class="item px-2" style="background-color:#ffffff">
+                    <div class="fh5co_hover_news_img">
+                        <div class="fh5co_news_img">
+                            <img src="../../../jelengkong/assets/img/berita/thumbnail/<?php echo $y[gambarPertama]?>"
+                                alt="" />
+                        </div>
+                        <div>
+                            <a href="detailBerita.php?id=<?php echo $y[id]?>"
+                                class="d-block fh5co_small_post_heading"><span
+                                    class=""><?php echo $y[judulBerita]?></span></a>
+                            <div class="c_g"><i class="fa fa-clock-o"></i> <?php echo $y[date_added]?></div>
+                        </div>
+                    </div>
                 </div>
 
-                <?php
+                <?php }
+                         ?>
+            </div>
+        </div>
+        <div class="container-fluid fh5co_video_news_bg pb-4">
+            <div class="container animate-box" data-animate-effect="fadeIn">
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom pt-5 pb-2 mb-4 text-black">
+                        Video News
+                    </div>
+                </div>
+                <div>
+                    <div class="owl-carousel owl-theme" id="slider3">
+                        <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_berita WHERE typeBerita = 'Video'");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
+                        <div class="item px-2" style="background-color:#ffffff">
+                            <div class="fh5co_hover_news_img">
+                                <div class="fh5co_hover_news_img_video_tag_position_relative">
+                                    <div class="fh5co_news_img" style="background-color:#ffffff">
+                                        <video id="video" width="100%" height="200">
+                                            <source
+                                                src='../../../jelengkong/assets/img/berita/video/<?php echo $y[video]?>'
+                                                type='video/mp4'>
+                                            Your browser does not support HTML video.</video>
+                                    </div>
+                                    <div class="fh5co_hover_news_img_video_tag_position_absolute fh5co_hide">
+                                        <img src="images/ariel-lustre-208615.jpg" alt="" />
+                                    </div>
+                                    <div class="fh5co_hover_news_img_video_tag_position_absolute_1 fh5co_hide"
+                                        id="videoPlay" onclick="playVid()">
+                                        <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button_1">
+                                            <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button">
+                                                <span><i class="fa fa-play" id="btnPlay"
+                                                        onclick="pauseVid()"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fh5co_hover_news_img_video_tag_position_absolute_1 fh5co_hide"
+                                        id="videoPause" onclick="pauseVide()" style="display:none">
+                                        <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button_1">
+                                            <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button">
+                                                <span><i class="fa fa-pause" id="btnPlay"
+                                                        onclick="pauseVid()"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pt-2">
+                                    <a href="detailBerita.php?id=<?php echo $y[id]?>"
+                                        class="d-block fh5co_small_post_heading fh5co_small_post_heading_1"
+                                        style="color:black">
+                                        <span class=""><?php echo $y[judulBerita]?>
+                                        </span></a>
+                                    <div class="c_g">
+                                        <i class="fa fa-clock-o"></i> <?php echo $y[date_added]?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main id="main">
+
+            <!-- ======= About Us Section ======= -->
+            <section id="about" class="about" style="background-color:#F2E5D7;margin-top:-5%">
+                <div class="container">
+
+                    <div class="section-title">
+                        <b>
+                            <h2 style="color:black">Profil Desa</h2>
+                        </b>
+                    </div>
+
+                    <?php
                  $tampil=mysqli_query($config,"SELECT * FROM tbl_profil_desa");
                  $r=mysqli_fetch_array($tampil);
                 ?>
-                <div class="row">
-                    <div class="col-lg-6 order-1 order-lg-2">
-                        <img src="assets/img/profil_desa/profileDesa.png" style="margin-top:-4%" class="img-fluid"
-                            alt="">
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1" style="color:black">
-                        <?php echo $r['deskripsiDesa']?>
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- End About Us Section -->
-
-        <!-- ======= Services Section ======= -->
-
-        <!-- ======= Our Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio" style="background-color:#F2E5D7">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2 style="color:black">Galeri Lukisan</h2>
-                </div>
-
-                <div class="row">
-                    <?php
-                         $show=mysqli_query($config,"SELECT * FROM tbl_portofolio, tbl_user WHERE tbl_portofolio.idPelukis = tbl_user.idUser ORDER BY tbl_portofolio.id ASC LIMIT 9");
-                         while ($y=mysqli_fetch_array($show)){
-                        ?>
-                    <div class="col-lg-4 col-md-8 filter-app">
-                        <div class="portfolio-item" data-toggle="modal"
-                            data-target="#portfolioModale<?php echo $y[id]?>">
-                            <div class="portfolio-item-caption align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="rounded" width="auto" height="300"
-                                src="pelukis/assets/img/portfolio/<?php echo $y[gambarLukisan]?>" class="img-fluid"
+                    <div class="row">
+                        <div class="col-lg-6 order-1 order-lg-2">
+                            <img src="assets/img/profil_desa/profileDesa.png" style="margin-top:-4%" class="img-fluid"
                                 alt="">
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1" style="color:black">
+                            <?php echo $r['deskripsiDesa']?>
                         </div>
                     </div>
 
-                    <div class="portfolio-modal modal fade" id="portfolioModale<?php echo $y[id]?>" tabindex="-1"
-                        role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
-                        <div class="modal-dialog modal-xl" role="document">
-                            <div class="modal-content">
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                                </button>
-                                <div class="modal-body ">
-                                    <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-12">
-                                                <!-- Portfolio Modal - Title-->
-                                                <h3 style="text-align:left">
-                                                    <?php echo $y[namaLukisan]?></h3>
-                                                <!-- Icon Divider-->
-                                                <div class="row" style="margin-top:3%;">
-                                                    <div class="col-lg-6 order-1 order-lg-2">
-                                                        <b> <label style="text-align:left;font-size:19px"
-                                                                for="">Definisi</label></b>
-                                                        <p><?php echo $y['deskripsiLukisan']?></p>
-                                                        <b> <label style="text-align:left;margin-top:5%;font-size:19px"
-                                                                for="">Spesifikasi</label></b>
-                                                        <p>Nama : <?php echo $y['namaLukisan']?></p>
-                                                        <p>Pelukis : <?php echo $y['namaLengkap']?></p>
-                                                        <p>Media : <?php echo $y['mediaLukisan']?></p>
-                                                        <p>Ukuran Lukisan : <?php echo $y['ukuranLukisan']?></p>
-                                                        <p class="uang">Harga : <?php echo $y['harga']?></p>
-                                                        <p>Penjual : <?php echo $y['namaPenjual']?></p>
+                </div>
+            </section><!-- End About Us Section -->
 
-                                                        <div style="margin-top:10%">
-                                                            <a href="https://wa.me/<?php echo $y[nohp]?>"
-                                                                style="text-decoration:none; width:50%"> <button
-                                                                    class="btn btn-lg" name="edit" value="Edit">Hubungi
-                                                                    Penjual</button></a>
-                                                            <a href="<?php echo $y[link]?>"
-                                                                style="text-decoration:none; width:30%"> <button
-                                                                    class="btn btn-lg btn-primary"
-                                                                    style="margin-left:10%" name="delete"
-                                                                    value="Delete">Beli</button></a>
+            <!-- ======= Services Section ======= -->
+
+            <!-- ======= Our Portfolio Section ======= -->
+            <section id="portfolio" class="portfolio" style="background-color:#F2E5D7">
+                <div class="container">
+
+                    <div class="section-title">
+                        <h2 style="color:black">Galeri Lukisan</h2>
+                    </div>
+
+                    <div class="row">
+                        <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_portofolio, tbl_user WHERE tbl_portofolio.idPelukis = tbl_user.idUser ORDER BY tbl_portofolio.id ASC LIMIT 9");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
+                        <div class="col-lg-4 col-md-8 filter-app">
+                            <div class="portfolio-item" data-toggle="modal"
+                                data-target="#portfolioModale<?php echo $y[id]?>">
+                                <div
+                                    class="portfolio-item-caption align-items-center justify-content-center h-100 w-100">
+
+                                </div>
+                                <img class="rounded" width="auto" height="300"
+                                    src="pelukis/assets/img/portfolio/<?php echo $y[gambarLukisan]?>" class="img-fluid"
+                                    alt="">
+                            </div>
+                        </div>
+
+                        <div class="portfolio-modal modal fade" id="portfolioModale<?php echo $y[id]?>" tabindex="-1"
+                            role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+                            <div class="modal-dialog modal-xl" role="document">
+                                <div class="modal-content">
+
+                                    </button>
+                                    <div class="modal-body ">
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-12">
+                                                    <!-- Portfolio Modal - Title-->
+                                                    <h3 style="text-align:left">
+                                                        <?php echo $y[namaLukisan]?></h3>
+                                                    <!-- Icon Divider-->
+                                                    <div class="row" style="margin-top:3%;">
+                                                        <div class="col-lg-6 order-1 order-lg-2">
+                                                            <b> <label style="text-align:left;font-size:19px"
+                                                                    for="">Definisi</label></b>
+                                                            <p><?php echo $y['deskripsiLukisan']?></p>
+                                                            <b> <label
+                                                                    style="text-align:left;margin-top:5%;font-size:19px"
+                                                                    for="">Spesifikasi</label></b>
+                                                            <p>Nama : <?php echo $y['namaLukisan']?></p>
+                                                            <p>Pelukis : <?php echo $y['namaLengkap']?></p>
+                                                            <p>Media : <?php echo $y['mediaLukisan']?></p>
+                                                            <p>Ukuran Lukisan : <?php echo $y['ukuranLukisan']?></p>
+                                                            <p class="uang">Harga : <?php echo $y['harga']?></p>
+                                                            <p>Penjual : <?php echo $y['namaPenjual']?></p>
+
+                                                            <div style="margin-top:10%">
+                                                                <a href="https://wa.me/<?php echo $y[nohp]?>"
+                                                                    style="text-decoration:none; width:50%"> <button
+                                                                        class="btn btn-lg" name="edit"
+                                                                        value="Edit">Hubungi
+                                                                        Penjual</button></a>
+                                                                <a href="<?php echo $y[link]?>"
+                                                                    style="text-decoration:none; width:30%"> <button
+                                                                        class="btn btn-lg btn-primary"
+                                                                        style="margin-left:10%" name="delete"
+                                                                        value="Delete">Beli</button></a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
-                                                        <img class="rounded" width="530" height="500"
-                                                            src="pelukis/assets/img/portfolio/<?php echo $y[gambarLukisan]?>"
-                                                            alt="">
-                                                    </div>
+                                                        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
+                                                            <img class="rounded" width="530" height="500"
+                                                                src="pelukis/assets/img/portfolio/<?php echo $y[gambarLukisan]?>"
+                                                                alt="">
+                                                        </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
-                    </div>
-
-                    <?php
+                        <?php
                          }
                     ?>
-                </div>
+                    </div>
 
-                <?php 
+                    <?php 
 
 
             $show=mysqli_query($config,"SELECT COUNT(*) as jum FROM tbl_portofolio");
@@ -1338,56 +1447,59 @@ img {
             
             ?>
 
-            </div>
-        </section><!-- End Our Portfolio Section -->
-
-        <!-- ======= Frequently Asked Questions Section ======= -->
-
-
-        <!-- ======= Our Team Section ======= -->
-        <section id="team" class="portfolio" style="background-color:#F2E5D7">
-            <div class="container">
-
-                <div class="section-title">
-                    <b>
-                        <h2 style="color:black">Acara</h2>
-                    </b>
-                    <p style="color:black">Pameran seni rupa adalah kegiatan untuk menyajikan karya seni rupa agar dapat
-                        diapresiasi oleh
-                        masyarakat
-                        luas secara sadar melalui penyampaian yang terencana. Penyelenggaraannya sendiri dapat dilakukan
-                        diberbagai tempat
-                        , umumnya adalah galeri, ruang yang memang dirancang untuk berpameran
-                    </p>
                 </div>
-                <div class="row portfolio-container">
+            </section><!-- End Our Portfolio Section -->
+
+            <!-- ======= Frequently Asked Questions Section ======= -->
 
 
-                    <?php
+            <!-- ======= Our Team Section ======= -->
+            <section id="team" class="portfolio" style="background-color:#F2E5D7">
+                <div class="container">
+
+                    <div class="section-title">
+                        <b>
+                            <h2 style="color:black">Acara</h2>
+                        </b>
+                        <p style="color:black">Pameran seni rupa adalah kegiatan untuk menyajikan karya seni rupa agar
+                            dapat
+                            diapresiasi oleh
+                            masyarakat
+                            luas secara sadar melalui penyampaian yang terencana. Penyelenggaraannya sendiri dapat
+                            dilakukan
+                            diberbagai tempat
+                            , umumnya adalah galeri, ruang yang memang dirancang untuk berpameran
+                        </p>
+                    </div>
+                    <div class="row portfolio-container">
+
+
+                        <?php
                          $show=mysqli_query($config,"SELECT * FROM tbl_acara");
                          while ($y=mysqli_fetch_array($show)){
                         ?>
-                    <div class="col-lg-4 col-md-6 filter-app">
-                        <div class="portfolio-item">
-                            <img src="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h3><a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
-                                        data-gall="portfolioGallery" class="venobox"
-                                        title="<?php echo $y[namaAcara]?>"><?php echo $y[namaAcara]?></a></h3>
-                                <a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
-                                    data-gall="portfolioGallery" class="venobox" title="Web 1"><i
-                                        class="icofont-plus"></i></a>
+                        <div class="col-lg-4 col-md-6 filter-app">
+                            <div class="portfolio-item">
+                                <img src="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>" class="img-fluid"
+                                    alt="">
+                                <div class="portfolio-info">
+                                    <h3><a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
+                                            data-gall="portfolioGallery" class="venobox"
+                                            title="<?php echo $y[namaAcara]?>"><?php echo $y[namaAcara]?></a></h3>
+                                    <a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
+                                        data-gall="portfolioGallery" class="venobox" title="Web 1"><i
+                                            class="icofont-plus"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <?php
+                        <?php
                     }
                     ?>
 
-                </div>
-                <?php 
+                    </div>
+                    <?php 
 
 
             $showAcara=mysqli_query($config,"SELECT COUNT(*) as jum FROM tbl_acara");
@@ -1404,154 +1516,183 @@ img {
             
             ?>
 
-        </section><!-- End Our Team Section -->
+            </section><!-- End Our Team Section -->
 
-        <!-- ======= Contact Us Section ======= -->
-        <section id="contact" class="contact section-bg" style="background-color:#F2E5D7">
-            <div class="container">
+            <!-- ======= Contact Us Section ======= -->
+            <section id="contact" class="contact section-bg" style="background-color:#F2E5D7">
+                <div class="container">
 
-                <div class="section-title">
-                    <h2>Kontak Kami</h2>
+                    <div class="section-title">
+                        <h2>Kontak Kami</h2>
 
-                </div>
+                    </div>
 
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="info">
-                            <div>
-                                <b> <label>Alamat : &nbsp </label> </b>
-                                <p> <?php echo $r[alamatDesa]?></p>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="info">
+                                <div>
+                                    <b> <label>Alamat : &nbsp </label> </b>
+                                    <p> <?php echo $r[alamatDesa]?></p>
+                                </div>
+
+
+                                <div>
+                                    <b><label>Email : &nbsp</label></b>
+                                    <p> <?php echo $r[emailDesa]?></p>
+                                </div>
+
+
+                                <div>
+                                    <b><label>No Telepon : &nbsp</label></b>
+                                    <p> <?php echo $r[noTelp]?></p>
+                                </div>
+
+
+
                             </div>
+                        </div>
 
-
-                            <div>
-                                <b><label>Email : &nbsp</label></b>
-                                <p> <?php echo $r[emailDesa]?></p>
-                            </div>
-
-
-                            <div>
-                                <b><label>No Telepon : &nbsp</label></b>
-                                <p> <?php echo $r[noTelp]?></p>
-                            </div>
-
-
+                        <div class="col-lg-2 col-md-12">
+                            <iframe height="400" width="600" class="map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31679.19153584319!2d107.64097932824737!3d-7.021164081371023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ea0fc9d23975%3A0xcc722fa786cbb977!2sJelekong%2C%20Kec.%20Baleendah%2C%20Bandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1590216933913!5m2!1sid!2sid"
+                                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                                aria-hidden="false" tabindex="0"></iframe>
 
                         </div>
-                    </div>
-
-                    <div class="col-lg-2 col-md-12">
-                        <iframe height="400" width="600" class="map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31679.19153584319!2d107.64097932824737!3d-7.021164081371023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ea0fc9d23975%3A0xcc722fa786cbb977!2sJelekong%2C%20Kec.%20Baleendah%2C%20Bandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1590216933913!5m2!1sid!2sid"
-                            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
-                            aria-hidden="false" tabindex="0"></iframe>
 
                     </div>
 
                 </div>
+            </section><!-- End Contact Us Section -->
 
+            <!-- ======= Map Section ======= -->
+
+        </main><!-- End #main -->
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Amoeba</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-one-page-bootstrap-template-amoeba/ -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
             </div>
-        </section><!-- End Contact Us Section -->
+        </footer><!-- End #footer -->
 
-        <!-- ======= Map Section ======= -->
+        <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-    </main><!-- End #main -->
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="assets/vendor/venobox/venobox.min.js"></script>
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Amoeba</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-one-page-bootstrap-template-amoeba/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-        </div>
-    </footer><!-- End #footer -->
-
-    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/venobox/venobox.min.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+        <!-- Template Main JS File -->
+        <script src="assets/js/main.js"></script>
 
 
-    <script>
-    var slideIndex = 0;
-    showSlides();
+        <script>
+        var slideIndex = 0;
+        showSlides();
 
-    var slidesIndex = 0;
+        var slidesIndex = 0;
 
-    function plusSlides(n) {
-        showSlide(slidesIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlide(slidesIndex = n);
-    }
-
-    function showSlide(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {
-            slidesIndex = 1
+        function plusSlides(n) {
+            showSlide(slidesIndex += n);
         }
-        if (n < 1) {
-            slidesIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-    }
 
-    function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+        function currentSlide(n) {
+            showSlide(slidesIndex = n);
         }
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1
+
+        function showSlide(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slidesIndex = 1
+            }
+            if (n < 1) {
+                slidesIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 5000); // Change image every 2 seconds
         }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 5000); // Change image every 2 seconds
-    }
-    </script>
 
-    <script type="text/javascript">
-    $(document).ready(function() {
+        var vid = document.getElementById("video");
 
-        // Format mata uang.
-        $('.uang').mask('000.000.000', {
-            reverse: true
-        });
+        function playVid() {
+            vid.play();
+            vid.volume = 0.5;
+            document.getElementById("videoPlay").style.display = "none";
+            document.getElementById("videoPause").style.display = "block";
 
-    })
-    </script>
+        }
 
+        function pauseVid() {
+            vid.pause();
+            document.getElementById("videoPlay").style.display = "block";
+            document.getElementById("videoPause").style.display = "none";
+        }
+        </script>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+
+            // Format mata uang.
+            $('.uang').mask('000.000.000', {
+                reverse: true
+            });
+
+        })
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="news/js/owl.carousel.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+        </script>
+        <!-- Waypoints -->
+        <script src="news/js/jquery.waypoints.min.js"></script>
+        <!-- Main -->
+        <script src="news/js/main.js"></script>
 </body>
 
 </html>
