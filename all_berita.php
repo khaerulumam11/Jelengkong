@@ -9,7 +9,7 @@ include "config/koneksi.php";
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Acara/Lukisan</title>
+    <title>Berita</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -32,6 +32,19 @@ include "config/koneksi.php";
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+    <link href="news/css/media_query.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link href="news/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="news/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="news/css/owl.theme.default.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link href="news/css/style_1.css" rel="stylesheet" type="text/css" />
+    <!-- Modernizr JS -->
+    <script src="news/js/modernizr-3.5.0.min.js"></script>
+
 
     <!-- Template Main CSS File -->
     <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
@@ -165,7 +178,7 @@ h6,
 /* Desktop Navigation */
 .nav-menu,
 .nav-menu * {
-    margin: 0;
+    margin: 10;
     padding: 0;
     list-style: none;
 }
@@ -180,6 +193,7 @@ h6,
     display: block;
     position: relative;
     color: #fff;
+    margin-left: 3%;
     padding: 10px 15px;
     transition: 0.3s;
     font-size: 14px;
@@ -892,10 +906,9 @@ section {
     color: #fff;
 }
 
-
 #hero {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     background: url("assets/img/header.jpg") top center;
     background-size: cover;
     position: relative;
@@ -904,7 +917,7 @@ section {
 
 #hero:before {
     content: "";
-    background: rgba(105, 170, 150, 0.65);
+    background: rgba(100, 150, 120, 0.45);
     position: absolute;
     bottom: 0;
     top: 0;
@@ -979,76 +992,172 @@ section {
     }
 }
 
-.filterDiv {
+button {
+    border-radius: 4px;
+    background-color: #F2E5D7;
+    border-color: #63372C;
+    color: black;
+    text-align: center;
+    font-size: 23px;
+    border: inactive;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button2 {
+    background-color: #F9ECCC;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+}
+
+.mySlides {
     display: none;
 }
 
-.show {
-    display: block;
+img {
+    vertical-align: middle;
 }
 
-.contain {
-    margin-top: 20px;
-    overflow: hidden;
+/* Slideshow container */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
 }
 
-/* Style the buttons */
-.tombol {
-    border: none;
-    outline: none;
-    padding: 12px 12px;
-    width: 12%;
+/* Caption text */
+.text {
+    color: #f2f2f2;
     font-size: 15px;
-    background-color: #f1f1f1;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.prev,
+.next {
     cursor: pointer;
-    margin-bottom: 2%;
-}
-
-.tombol:hover {
-    background-color: #ddd;
-}
-
-.tombol.active {
-    background-color: #70B9B0;
-    border: none;
-
-    outline: none;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
     color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
 }
 
-
-
-form.example input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 90%;
-    background: #f1f1f1;
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
 
-form.example button {
-    float: left;
-    width: 10%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-form.example button:hover {
-    background: #0b7dda;
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
 }
 
-form.example::after {
-    content: "";
-    clear: both;
-    display: table;
+/* The dots/bullets/indicators */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 5.5s;
+    animation-name: fade;
+    animation-duration: 5.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .3
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .3
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
 }
 </style>
+
 
 <body>
 
@@ -1072,14 +1181,13 @@ form.example::after {
                     <li><a href="login.php">Masuk</a></li>
                 </ul>
             </nav><!-- .nav-menu -->
-
         </div>
     </header><!-- End #header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero">
+    <section id="hero" style="height:400px">
         <div class="hero-container">
-            <h1 style="font-family:Glacial Indefference">ACARA/PAMERAN</h1>
+            <h1 style="font-family:Glacial Indefference">Berita</h1>
         </div>
     </section><!-- #hero -->
 
@@ -1089,63 +1197,35 @@ form.example::after {
         <!-- ======= Services Section ======= -->
 
         <!-- ======= Our Portfolio Section ======= -->
-        <section id="team" class="portfolio" style="margin-top:5%">
-            <div class="container">
+        <div class="container-fluid pb-4 pt-5" style="margin-bottom:5%">
+            <div class="container animate-box">
 
-                <div class="section-title" style="display:none">
-                    <h2>Acara</h2>
-                    <p>Pameran seni rupa adalah kegiatan untuk menyajikan karya seni rupa agar dapat diapresiasi oleh
-                        masyarakat
-                        luas secara sadar melalui penyampaian yang terencana. Penyelenggaraannya sendiri dapat dilakukan
-                        diberbagai tempat
-                        , umumnya adalah galeri, ruang yang memang dirancang untuk berpameran
-                    </p>
-                </div>
-                <form class="example" action="" method="get" style="margin-bottom:2%">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <?php
-                    $search=$_GET['search'];
-                    if ($search !="") {
-                        # code...
-                        echo "
-                        <label style='margin-left:0%'>Hasil Pencarian $search </label> <br>
-                        ";
-                    }
-                ?>
-                <div class="row portfolio-container">
-
+                <div class="owl-carousel owl-theme" id="slider2" style="background-color:#ffffff00">
                     <?php
-                    $show=mysqli_query($config,"SELECT * FROM tbl_acara WHERE tbl_acara.namaAcara LIKE '%$search%'");
-                    while ($y=mysqli_fetch_array($show)){
-                    ?>
-                    <div class="col-sm-4 mb-3">
-                        <div class="card mx-auto">
-                            <img src="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>" class="card-img-top"
-                                alt="...">
-                            <div class="card-body" style="height: 15rem;">
-                                <h5 class="card-title"><?php echo $y['namaAcara'] ?></h5>
-                                <p class="card-text"><b>Rp <?php echo number_format($y['hargaTiket'],0,",",".") ?>,-/
-                                        Sesi</b></p>
-                                <p class="card-text"><?php echo $y['deskripsiAcara'] ?></p>
+                         $show=mysqli_query($config,"SELECT * FROM tbl_berita");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
+                    <div class="item px-2" style="background-color:#ffffff">
+                        <div class="fh5co_hover_news_img">
+                            <div class="fh5co_news_img">
+                                <img src="assets/img/berita/thumbnail/<?php echo $y[gambarPertama]?>" alt="" />
                             </div>
-                            <div class="card-body">
-                                <a href="formpembelian.php?product=<?php echo $y['id'] ?>"
-                                    class="card-link btn btn-info" role="button"
-                                    style="width: 100%; background-color:pink; border-color:white;">Book</a>
+                            <div>
+                                <a href="detailBerita.php?id=<?php echo $y[id]?>"
+                                    class="d-block fh5co_small_post_heading"><span
+                                        class=""><?php echo $y[judulBerita]?></span></a>
+                                <div class="c_g"><i class="fa fa-clock-o"></i> <?php echo $y[date_added]?></div>
                             </div>
                         </div>
                     </div>
 
-
-                    <?php
-                    }
-                    ?>
-
-
+                    <?php }
+                         ?>
                 </div>
-        </section><!-- End Our Team Section -->
+
+            </div>
+
+        </div>
 
 
         <!-- ======= Frequently Asked Questions Section ======= -->
@@ -1182,6 +1262,20 @@ form.example::after {
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/venobox/venobox.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="news/js/owl.carousel.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+    </script>
+    <!-- Waypoints -->
+    <script src="news/js/jquery.waypoints.min.js"></script>
+    <!-- Main -->
+    <script src="news/js/main.js"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
