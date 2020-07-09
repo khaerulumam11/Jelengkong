@@ -175,7 +175,7 @@ h6,
 /* Desktop Navigation */
 .nav-menu,
 .nav-menu * {
-    margin: 0;
+    margin: 10;
     padding: 0;
     list-style: none;
 }
@@ -190,6 +190,7 @@ h6,
     display: block;
     position: relative;
     color: #fff;
+    margin-left: 3%;
     padding: 10px 15px;
     transition: 0.3s;
     font-size: 14px;
@@ -1161,22 +1162,73 @@ img {
         <div class="container">
 
             <div class="logo float-left">
-                <h1 class="text-light"><a href="#hero"><span>JELEKONG</span></a></h1>
+                <h1 class="text-light"><a href="index.php"><span>JELEKONG</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
-            <nav class="nav-menu float-right d-none d-lg-block">
+            <nav class="nav-menu float-right d-none d-lg-block" style="margin-left:3%">
                 <ul>
-                    <li class="text-light"><a href="#about">Profil Desa</a></li>
-                    <li><a href="#portfolio">Galeri Lukisan</a></li>
-                    <li><a href="#team">Acara</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+                    <li class="text-light"><a href="index.php#about">Sampurasun</a></li>
+                    <li><a href="all_galeri.php">Galeri</a></li>
+                    <li><a href="all_acara.php">Acara</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#videoModale">Pasar Seni</a></li>
+                    <li><a href="all_berita.php">Berita</a></li>
+                    <li><a href="login.php">Masuk</a></li>
                 </ul>
             </nav><!-- .nav-menu -->
 
         </div>
     </header><!-- End #header -->
+
+    <div class="portfolio-modal modal fade" id="videoModale" tabindex="-1" role="dialog"
+        aria-labelledby="portfolioModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-l" role="document">
+            <div class="modal-content">
+
+                </button>
+                <div class="modal-body ">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <!-- Portfolio Modal - Title-->
+                                <div class="fh5co_hover_news_img_video_tag_position_relative">
+                                    <div class="fh5co_news_img" style="background-color:#ffffff; margin-top:-10%">
+                                        <video id="video" width="100%" height="500">
+                                            <source src='assets/img/berita/video/medium.mp4' type='video/mp4'>
+                                            Your browser does not support HTML video.</video>
+                                    </div>
+                                    <div class="fh5co_hover_news_img_video_tag_position_absolute fh5co_hide">
+                                        <img src="images/ariel-lustre-208615.jpg" alt="" />
+                                    </div>
+                                    <div class="fh5co_hover_news_img_video_tag_position_absolute_1 fh5co_hide"
+                                        id="videoPlay" onclick="playVid()">
+                                        <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button_1">
+                                            <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button">
+                                                <span><i class="fa fa-play" id="btnPlay"
+                                                        onclick="pauseVid()"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fh5co_hover_news_img_video_tag_position_absolute_1 fh5co_hide"
+                                        id="videoPause" onclick="pauseVide()" style="display:none">
+                                        <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button_1">
+                                            <div class="fh5co_hover_news_img_video_tag_position_absolute_1_play_button">
+                                                <span><i class="fa fa-pause" id="btnPlay"
+                                                        onclick="pauseVid()"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
     <!-- ======= Hero Section ======= -->
     <section>
@@ -1215,23 +1267,22 @@ img {
 
     </section><!-- #hero -->
 
-    <div class="container-fluid pb-4 pt-5" style="margin-top:-5%">
+    <div class="container-fluid pb-4 pt-5" style="margin-top:-5%; margin-bottom:5%">
         <div class="container animate-box">
             <div>
                 <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">
-                    News
+                    Berita
                 </div>
             </div>
             <div class="owl-carousel owl-theme" id="slider2" style="background-color:#ffffff00">
                 <?php
-                         $show=mysqli_query($config,"SELECT * FROM tbl_berita WHERE typeBerita = 'Text & Gambar'");
+                         $show=mysqli_query($config,"SELECT * FROM tbl_berita");
                          while ($y=mysqli_fetch_array($show)){
                         ?>
                 <div class="item px-2" style="background-color:#ffffff">
                     <div class="fh5co_hover_news_img">
                         <div class="fh5co_news_img">
-                            <img src="../../../jelengkong/assets/img/berita/thumbnail/<?php echo $y[gambarPertama]?>"
-                                alt="" />
+                            <img src="assets/img/berita/thumbnail/<?php echo $y[gambarPertama]?>" alt="" />
                         </div>
                         <div>
                             <a href="detailBerita.php?id=<?php echo $y[id]?>"
@@ -1241,12 +1292,10 @@ img {
                         </div>
                     </div>
                 </div>
-
-                <?php }
-                         ?>
+                <?php } ?>
             </div>
         </div>
-        <div class="container-fluid fh5co_video_news_bg pb-4">
+        <div class="container-fluid fh5co_video_news_bg pb-4" style="display:none">
             <div class="container animate-box" data-animate-effect="fadeIn">
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom pt-5 pb-2 mb-4 text-black">
@@ -1264,8 +1313,7 @@ img {
                                 <div class="fh5co_hover_news_img_video_tag_position_relative">
                                     <div class="fh5co_news_img" style="background-color:#ffffff">
                                         <video id="video" width="100%" height="200">
-                                            <source
-                                                src='../../../jelengkong/assets/img/berita/video/<?php echo $y[video]?>'
+                                            <source src='assets/img/berita/video/<?php echo $y[video]?>'
                                                 type='video/mp4'>
                                             Your browser does not support HTML video.</video>
                                     </div>
@@ -1313,7 +1361,7 @@ img {
         <main id="main">
 
             <!-- ======= About Us Section ======= -->
-            <section id="about" class="about" style="background-color:#F2E5D7;margin-top:-5%">
+            <section id="about" class="about" style="background-color:#F2E5D7;margin-top:5%">
                 <div class="container">
 
                     <div class="section-title">
@@ -1478,17 +1526,20 @@ img {
                          $show=mysqli_query($config,"SELECT * FROM tbl_acara");
                          while ($y=mysqli_fetch_array($show)){
                         ?>
-                        <div class="col-lg-4 col-md-6 filter-app">
-                            <div class="portfolio-item">
-                                <img src="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h3><a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
-                                            data-gall="portfolioGallery" class="venobox"
-                                            title="<?php echo $y[namaAcara]?>"><?php echo $y[namaAcara]?></a></h3>
-                                    <a href="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>"
-                                        data-gall="portfolioGallery" class="venobox" title="Web 1"><i
-                                            class="icofont-plus"></i></a>
+                        <div class="col-sm-4 mb-3">
+                            <div class="card mx-auto">
+                                <img src="pelukis/assets/img/acara/<?php echo $y[posterAcara]?>" class="card-img-top"
+                                    alt="...">
+                                <div class="card-body" style="height: 15rem;">
+                                    <h5 class="card-title"><?php echo $y['namaAcara'] ?></h5>
+                                    <p class="card-text"><b>Rp
+                                            <?php echo number_format($y['hargaTiket'],0,",",".") ?>,-/ Sesi</b></p>
+                                    <p class="card-text"><?php echo $y['deskripsiAcara'] ?></p>
+                                </div>
+                                <div class="card-body">
+                                    <a href="formpembelian.php?product=<?php echo $y['id'] ?>"
+                                        class="card-link btn btn-info" role="button"
+                                        style="width: 100%; background-color:pink; border-color:white;">Book</a>
                                 </div>
                             </div>
                         </div>

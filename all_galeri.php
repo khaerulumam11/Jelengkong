@@ -9,7 +9,12 @@ include "config/koneksi.php";
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Galeri Lukisan</title>
+    <?php
+    $id = $_GET['id'];
+    $show=mysqli_query($config,"SELECT * FROM tbl_berita WHERE id = '$id'");
+    $y=mysqli_fetch_array($show);
+    ?>
+    <title><?php echo $y['judulBerita']; ?></title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -31,6 +36,19 @@ include "config/koneksi.php";
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+    <link href="news/css/media_query.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link href="news/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="news/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="news/css/owl.theme.default.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link href="news/css/style_1.css" rel="stylesheet" type="text/css" />
+    <!-- Modernizr JS -->
+    <script src="news/js/modernizr-3.5.0.min.js"></script>
+
 
     <!-- Template Main CSS File -->
     <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
@@ -117,11 +135,11 @@ h6,
     z-index: 997;
     transition: all 0.5s;
     padding: 20px 0;
-    background: #2d6760;
+    background: #63372C;
 }
 
 #header.header-scrolled {
-    background: #1d443f;
+    background: #63372C;
     height: 60px;
     padding: 10px 0;
 }
@@ -178,7 +196,7 @@ h6,
 .nav-menu a {
     display: block;
     position: relative;
-    color: #d2ece9;
+    color: #fff;
     padding: 10px 15px;
     transition: 0.3s;
     font-size: 14px;
@@ -188,7 +206,7 @@ h6,
 .nav-menu a:hover,
 .nav-menu .active>a,
 .nav-menu li:hover>a {
-    color: #9cd5ce;
+    color: #FFF;
     text-decoration: none;
 }
 
@@ -874,7 +892,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-    background: #073839;
+    background: #63372C;
     padding: 30px 0;
     color: #fff;
     font-size: 14px;
@@ -893,7 +911,7 @@ section {
 
 #hero {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     background: url("assets/img/header.jpg") top center;
     background-size: cover;
     position: relative;
@@ -902,7 +920,7 @@ section {
 
 #hero:before {
     content: "";
-    background: rgba(105, 170, 150, 0.65);
+    background: rgba(100, 150, 120, 0.45);
     position: absolute;
     bottom: 0;
     top: 0;
@@ -977,95 +995,192 @@ section {
     }
 }
 
-.filterDiv {
+button {
+    border-radius: 4px;
+    background-color: #F2E5D7;
+    border-color: #63372C;
+    color: black;
+    text-align: center;
+    font-size: 23px;
+    border: inactive;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button2 {
+    background-color: #F9ECCC;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+}
+
+.mySlides {
     display: none;
 }
 
-.show {
-    display: block;
+img {
+    vertical-align: middle;
 }
 
-.contain {
-    margin-top: 20px;
-    overflow: hidden;
+/* Slideshow container */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
 }
 
-/* Style the buttons */
-.tombol {
-    border: none;
-    outline: none;
-    padding: 12px 12px;
-    width: 12%;
+/* Caption text */
+.text {
+    color: #f2f2f2;
     font-size: 15px;
-    background-color: #f1f1f1;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.prev,
+.next {
     cursor: pointer;
-    margin-bottom: 2%;
-}
-
-.tombol:hover {
-    background-color: #ddd;
-}
-
-.tombol.active {
-    background-color: #70B9B0;
-    border: none;
-
-    outline: none;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
     color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
 }
 
-
-
-form.example input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 90%;
-    background: #f1f1f1;
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
 
-form.example button {
-    float: left;
-    width: 10%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-form.example button:hover {
-    background: #0b7dda;
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
 }
 
-form.example::after {
-    content: "";
-    clear: both;
-    display: table;
+/* The dots/bullets/indicators */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 5.5s;
+    animation-name: fade;
+    animation-duration: 5.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .3
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .3
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
 }
 </style>
 
-<body>
+<body class="single">
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container">
 
             <div class="logo float-left">
-                <h1 class="text-light"><a href="#hero"><span>Jelekong</span></a></h1>
+                <h1 class="text-light"><a href="index.php"><span>Jelekong</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
-            <nav class="nav-menu float-right d-none d-lg-block">
+            <nav class="nav-menu float-right d-none d-lg-block" style="margin-left:3%">
                 <ul>
-                    <li class="text-light"><a href="index.php #about">Profil Desa</a></li>
-                    <li><a href="index.php #portfolio">Galeri Lukisan</a></li>
-                    <li><a href="index.php #team">Acara</a></li>
-                    <li><a href="index.php #contact">Kontak</a></li>
+                    <li class="text-light"><a href="index.php#about">Sampurasun</a></li>
+                    <li><a href="all_galeri.php">Galeri</a></li>
+                    <li><a href="all_acara.php">Acara</a></li>
+                    <li><a href="#">Pasar Seni</a></li>
+                    <li><a href="all_berita.php">Berita</a></li>
+                    <li><a href="login.php">Masuk</a></li>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -1073,142 +1188,131 @@ form.example::after {
     </header><!-- End #header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero">
-        <div class="hero-container">
-            <h1 style="font-family:Glacial Indefference">GALERI LUKISAN</h1>
+
+
+    <div id="fh5co-title-box"
+        style="background-image: url(assets/img/berita/thumbnail/<?php echo $y[gambarPertama]?>); background-position: 50% 90.5px; height:500px; margin-bottom:4%"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="page-title">
+            <img src="news/images/user.png" alt="Free HTML5 by FreeHTMl5.co">
+            <span><?php echo $y[date_added]?></span>
+            <h2><?php echo $y[judulBerita]?></h2>
+            <h6 style="color:white"><?php echo $y[typeBerita]?> , <?php echo $y[kategori]?></h6>
         </div>
-    </section><!-- #hero -->
-
-    <main id="main">
-
-
-
-        <section id="portfolio" class="portfolio">
-            <div class="container" id="myBtnContainer">
-                <form class="example" action="" style="margin-bottom:2%">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <?php
-                    $search = $_GET['search'];
-                      if ($search !="") {
-                        # code...
+    </div>
+    <div id="fh5co-single-content" class="container-fluid pb-4 pt-4 paddding">
+        <div class="container paddding">
+            <div class="row mx-0">
+                <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+                    <?php if ($y[gambarKedua] != '' && $y[gambarKetiga] != ''){
                         echo "
-                        <label style='margin-bottom:2%'>Hasil Pencarian $search </label> <br>
+                        <img src='assets/img/berita/gambar/$y[gambarKedua]' width='300px' height='300px'>
+                          
+                        <img src='assets/img/berita/gambar/$y[gambarKetiga]' width='300px' height='300px'>
+                         ";
+                    } else if ($y[gambarKedua] != ''){
+                        echo "
+                        <img src='assets/img/berita/gambar/$y[gambarKedua]' width='300px' height='300px'>
+                        ";
+                    } else if ($y[gambarKetiga] != ''){
+                        echo "
+                        <img src='assets/img/berita/gambar/$y[gambarKetiga]' width='300px' height='300px'>
                         ";
                     }
                     ?>
-                <div class="row">
-
-
-                    <div class="col-lg-12">
-
-                        <center>
-                            <button class="tombol active" onclick="filterSelection('all')"> Show all</button>
-
-                            <?php
-                                  $tampil_tema=mysqli_query($config,"SELECT * FROM tbl_tema LIMIT 5");
-                                   while ($tema=mysqli_fetch_array($tampil_tema)){
-                            ?>
-                            <button class="tombol" onclick="filterSelection('<?php echo $tema[tema];?>')">
-                                <?php echo $tema[tema] ?></button>
-
-                            <?php 
-                                   }
-                             ?>
-                        </center>
-                    </div>
-                </div>
-
-                <div class="row contain">
-                    <?php
-                         $show=mysqli_query($config,"SELECT * FROM tbl_portofolio, tbl_user WHERE tbl_portofolio.idPelukis = tbl_user.idUser AND tbl_portofolio.namaLukisan LIKE '%$search%'");
-                         while ($y=mysqli_fetch_array($show)){
-                        ?>
-                    <div class="col-lg-4 col-md-8 filterDiv <?php echo $y[temaLukisan]; ?>">
-                        <div class="portfolio-item" data-toggle="modal"
-                            data-target="#portfolioModale<?php echo $y[id]?>">
-
-                            <img class="rounded" width="auto" height="300"
-                                src="pelukis/assets/img/portfolio/<?php echo $y[gambarLukisan]?>" class="img-fluid"
-                                alt="">
-                        </div>
-                    </div>
-
-                    <div class="portfolio-modal modal fade" id="portfolioModale<?php echo $y[id]?>" tabindex="-1"
-                        role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
-                        <div class="modal-dialog modal-xl" role="document">
-                            <div class="modal-content">
-
-                                <div class="modal-body ">
-                                    <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-12">
-                                                <!-- Portfolio Modal - Title-->
-                                                <h3 style="text-align:left">
-                                                    <?php echo $y[namaLukisan]?></h3>
-                                                <!-- Icon Divider-->
-                                                <div class="row" style="margin-top:3%;">
-                                                    <div class="col-lg-6 order-1 order-lg-2">
-                                                        <b> <label style="text-align:left;font-size:19px"
-                                                                for="">Definisi</label></b>
-                                                        <p><?php echo $y['deskripsiLukisan']?></p>
-                                                        <b> <label style="text-align:left;margin-top:5%;font-size:19px"
-                                                                for="">Spesifikasi</label></b>
-                                                        <p>Nama : <?php echo $y['namaLukisan']?></p>
-                                                        <p>Pelukis : <?php echo $y['namaLengkap']?></p>
-                                                        <p>Media : <?php echo $y['mediaLukisan']?></p>
-                                                        <p>Ukuran Lukisan : <?php echo $y['ukuranLukisan']?></p>
-                                                        <p class="uang">Harga : <?php echo $y['harga']?></p>
-                                                        <p>Penjual : <?php echo $y['namaPenjual']?></p>
-
-                                                        <div style="margin-top:10%">
-                                                            <a href="https://wa.me/<?php echo $y[nohp]?>"
-                                                                style="text-decoration:none; width:50%"> <button
-                                                                    class="btn btn-lg" name="edit" value="Edit">Hubungi
-                                                                    Penjual</button></a>
-                                                            <a href="<?php echo $y[link]?>"
-                                                                style="text-decoration:none; width:30%"> <button
-                                                                    class="btn btn-lg btn-primary"
-                                                                    style="margin-left:10%" name="delete"
-                                                                    value="Delete">Beli</button></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
-                                                        <img class="rounded" width="530" height="500"
-                                                            src="pelukis/assets/img/portfolio/<?php echo $y[gambarLukisan]?>"
-                                                            alt="">
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <?php
-                         }
+                    <p style="margin-top:2%">
+                        <?php echo $y[isiBerita]?>
+                    </p>
+                    <?php if ($y[video] != ''){
+                        echo "
+                      <video width='600' controls>
+                          <source src='assets/img/berita/video/$y[video]' type='video/mp4'>
+                             Your browser does not support HTML video.
+                         </video>  ";
+                    } 
                     ?>
                 </div>
-
-
-
+                <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+                    <div>
+                        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="fh5co_tags_all">
+                        <a href="#" class="fh5co_tagg">Business</a>
+                        <a href="#" class="fh5co_tagg">Technology</a>
+                        <a href="#" class="fh5co_tagg">Sport</a>
+                        <a href="#" class="fh5co_tagg">Art</a>
+                        <a href="#" class="fh5co_tagg">Lifestyle</a>
+                        <a href="#" class="fh5co_tagg">Three</a>
+                        <a href="#" class="fh5co_tagg">Photography</a>
+                        <a href="#" class="fh5co_tagg">Lifestyle</a>
+                        <a href="#" class="fh5co_tagg">Art</a>
+                        <a href="#" class="fh5co_tagg">Education</a>
+                        <a href="#" class="fh5co_tagg">Social</a>
+                        <a href="#" class="fh5co_tagg">Three</a>
+                    </div>
+                    <div>
+                        <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+                    </div>
+                    <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_berita");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
+                    <div class="row pb-3">
+                        <div class="col-5 align-self-center">
+                            <img src="assets/img/berita/thumbnail/<?php echo $y[gambarPertama]?>" alt="img"
+                                class="fh5co_most_trading" />
+                        </div>
+                        <div class="col-7 paddding">
+                            <div class="most_fh5co_treding_font"> <a href="detailBerita.php?id=<?php echo $y[id]?>"
+                                    class="d-block fh5co_small_post_heading"> <?php echo $y[judulBerita]?> </a>
+                            </div>
+                            <div class="most_fh5co_treding_font_123"> <?php echo $y[date_added]?></div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
             </div>
-        </section><!-- End Our Portfolio Section -->
+        </div>
+    </div>
+    <div class="container-fluid pb-4 pt-5" style="margin-bottom:5%">
+        <div class="container animate-box">
+            <div>
+                <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Trending</div>
+            </div>
+            <div class="owl-carousel owl-theme" id="slider2" style="background-color:#ffffff00">
+                <?php
+                         $show=mysqli_query($config,"SELECT * FROM tbl_berita");
+                         while ($y=mysqli_fetch_array($show)){
+                        ?>
+                <div class="item px-2" style="background-color:#ffffff">
+                    <div class="fh5co_hover_news_img">
+                        <div class="fh5co_news_img">
+                            <img src="assets/img/berita/thumbnail/<?php echo $y[gambarPertama]?>" alt="" />
+                        </div>
+                        <div>
+                            <a href="detailBerita.php?id=<?php echo $y[id]?>"
+                                class="d-block fh5co_small_post_heading"><span
+                                    class=""><?php echo $y[judulBerita]?></span></a>
+                            <div class="c_g"><i class="fa fa-clock-o"></i> <?php echo $y[date_added]?></div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- ======= Frequently Asked Questions Section ======= -->
+                <?php }
+                         ?>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
 
 
 
 
-        <!-- ======= Map Section ======= -->
-
-    </main><!-- End #main -->
+    <!-- ======= Map Section ======= -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -1298,6 +1402,21 @@ form.example::after {
         });
     }
     </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="news/js/owl.carousel.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+    </script>
+    <!-- Waypoints -->
+    <script src="news/js/jquery.waypoints.min.js"></script>
+    <!-- Main -->
+    <script src="news/js/main.js"></script>
 
 
 </body>
